@@ -1,4 +1,4 @@
-from RogueFeature.Backend.Units import Unit
+from .unit import Unit
 
 
 class BaseObject(Unit):

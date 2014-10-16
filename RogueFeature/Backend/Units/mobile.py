@@ -1,7 +1,7 @@
 import random
 
-from RogueFeature.Backend.Units import Unit
 from RogueFeature.Backend.Game import Stats
+from .unit import Unit
 
 
 class Mobile(Unit):
