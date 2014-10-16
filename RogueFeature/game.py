@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import *
+from pygame.locals import *  # flake8: noqa
 
 BLOCKWIDTH = 23
 BLOCKHEIGHT = 10

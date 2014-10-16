@@ -6,5 +6,5 @@ class Unit:
         self.dir = face
         self.passable = passable
 
-    def SetPoint(p):
+    def SetPoint(self, p):
         self._point = p

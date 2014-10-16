@@ -1,12 +1,14 @@
 import random
 
 from RogueFeature.Backend.Units import Unit
+from RogueFeature.Backend.Game import Stats
+
 
 class Mobile(Unit):
     def __init__(self, x, y, imgPath, face, name, *args):
-        super(BaseObject, self).__init__(x, y, imgPath, face, name, False)
-        self._states = Stats(args)
-        self.hit = _stats.hitMax
+        super(Mobile, self).__init__(x, y, imgPath, face, name, False)
+        self._stats = Stats(args)
+        self.hit = self._stats.hitMax
 
     @property
     def hitMax(self):
@@ -17,7 +19,7 @@ class Mobile(Unit):
         return self._stats.atkMax + self._stats.atkMod
 
     @property
-    def def(self):
+    def defense(self):
         return self._stats.defMax + self._stats.defMod
 
     @property
@@ -42,10 +44,10 @@ class Mobile(Unit):
 
     def TakeHit(self, m):
         if not self.dod * 0.01 > random.random():
-            if m.atk <= self.def:
+            if m.atk <= self.defense:
                 return None
-            self.hit = hit - (m.atk - def)
-            if hit <= 0:
+            self.hit -= (m.atk - self.defense)
+            if self.hit <= 0:
                 self.Die()
 
     def Die(self):
