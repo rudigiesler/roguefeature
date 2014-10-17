@@ -5,10 +5,13 @@ from .unit import Unit
 
 
 class Mobile(Unit):
-    def __init__(self, x, y, imgPath, face, name, *args):
-        super(Mobile, self).__init__(x, y, imgPath, face, name, False)
-        self._stats = Stats(args)
-        self.hit = self._stats.hitMax
+    @property
+    def hit(self):
+        return self._stats.hit
+
+    @hit.setter
+    def hit(self, value):
+        self._stats._hit = value  
 
     @property
     def hitMax(self):
@@ -52,3 +55,14 @@ class Mobile(Unit):
 
     def Die(self):
         self._point.RemoveUnit(self)
+
+    def __init__(self, x, y, imgPath, face, name, *args):
+        super(Mobile, self).__init__(x, y, imgPath, face, name, False)
+        self._stats = Stats(args)
+        self.hit = self._stats.hitMax
+
+    def TakeHit(self, m):
+        if not self.dod * 0.01 > random.random() and m.atk > self.defense:
+            self.hit = self.hit - (m.atk - self.defense)
+            if hit <= 0:
+                Die()

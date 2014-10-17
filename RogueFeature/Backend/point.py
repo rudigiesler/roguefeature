@@ -61,3 +61,9 @@ class Point:
         if self._mob is not None:
             units.append(self._mob)
         return units
+
+    def GetMobile(self):
+        return self._mob
+
+    def GetObjects(self):
+        return self._objects
