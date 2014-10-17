@@ -1,7 +1,7 @@
 import unittest
 
 from RogueFeature.Backend import Direction
-from RogueFeature.Backend.Units import BaseObject, Mobile
+from RogueFeature.Backend.Units import BaseObject
 
 
 class BaseObjectTest(unittest.TestCase):
