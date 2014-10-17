@@ -12,4 +12,5 @@ Install requirements
 Run tests:
 ----------
     pip install -r requirements-dev.pip
+    pip install -e .
     py.test RogueFeature
