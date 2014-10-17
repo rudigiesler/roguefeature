@@ -1,5 +1,6 @@
 import random
 
+
 class Stats:
     SCALE = 5
     DEF_SCALE = 0.8
@@ -144,16 +145,9 @@ class Stats:
         self._spd = spd
         self.hit = self.hitMax
 
-    @classmethod
-    def fromRandom(cls, seed):
-        return cls(
-            cls.Generate(seed), cls.Generate(seed), cls.Generate(seed),
-            cls.Generate(seed))
-
-    @classmethod
-    def Generate(cls, seed):
-        mod = 0.85 + (0.3 * random.Random())
-        return int(round(seed * cls.SCALE * mod))
+    def Generate(self, seed):
+        mod = 0.85 + (0.3 * random.random())
+        return int(round(seed * self.SCALE * mod))
 
     def InitZero(self):
         self._str = 0
@@ -166,6 +160,8 @@ class Stats:
         self._spdMod = 0
         self._atkMod = 0
         self._dodMod = 0
+        self._defMod = 0
+        self._hitMod = 0
 
     def CheckHit(self):
         if (self.hit > (self.hitMax + self.hitMod)):
