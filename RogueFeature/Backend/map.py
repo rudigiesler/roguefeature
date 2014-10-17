@@ -44,6 +44,7 @@ class Map:
     def AddUnitToPoint(self, x, y, u):
         try:
             self._points[x][y].AddUnit(u)
+            u.SetPoint(self._points[x][y])
         except (AttributeError, IndexError) as e:
             if isinstance(e, AttributeError):
                 raise AttributeError(

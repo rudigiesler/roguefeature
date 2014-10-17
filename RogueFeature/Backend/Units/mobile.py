@@ -11,7 +11,7 @@ class Mobile(Unit):
 
     @hit.setter
     def hit(self, value):
-        self._stats._hit = value
+        self._stats.hit = value
 
     @property
     def hitMax(self):
@@ -19,38 +19,38 @@ class Mobile(Unit):
 
     @property
     def atk(self):
-        return self._stats.atkMax + self._stats.atkMod
+        return self._stats.atk + self._stats.atkMod
 
     @property
     def defense(self):
-        return self._stats.defMax + self._stats.defMod
+        return self._stats.defense + self._stats.defMod
 
     @property
     def dod(self):
-        return self._stats.dodMax + self._stats.dodMod
+        return self._stats.dod + self._stats.dodMod
 
     @property
     def str(self):
-        return self._stats.strMax + self._stats.strMod
+        return self._stats.str + self._stats.strMod
 
     @property
     def agi(self):
-        return self._stats.agiMax + self._stats.agiMod
+        return self._stats.agi + self._stats.agiMod
 
     @property
     def end(self):
-        return self._stats.endMax + self._stats.endMod
+        return self._stats.end + self._stats.endMod
 
     @property
     def spd(self):
-        return self._stats.spdMax + self._stats.spdMod
+        return self._stats.spd + self._stats.spdMod
 
     def Die(self):
         self._point.RemoveUnit(self)
 
     def __init__(self, x, y, imgPath, face, name, *args):
         super(Mobile, self).__init__(x, y, imgPath, face, name, False)
-        self._stats = Stats(args)
+        self._stats = Stats(*args)
         self.hit = self._stats.hitMax
 
     def TakeHit(self, m):
