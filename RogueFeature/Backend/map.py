@@ -54,14 +54,14 @@ class Map:
                     'map')
 
     def BoundCheck(self, x, y):
-        return not x >= self._columns or x < 0 or y >= self._rows or y < 0
+        return not (x >= self._columns or x < 0 or y >= self._rows or y < 0)
 
     def Passable(self, x, y):
         if not self.BoundCheck(x, y):
             return False
         p = self._points[x][y]
         if p.passable:
-            for u in p.UnitList():
+            for u in p.GenerateUnitList():
                 if not u.passable:
                     return False
         else:
@@ -70,7 +70,7 @@ class Map:
 
     def GetUnits(self, x, y):
         try:
-            return self._points[x][y].UnitList()
+            return self._points[x][y].GenerateUnitList()
         except IndexError:
             raise IndexError(
                 'Attempted to retrieve a unit list from a point outside ' +
