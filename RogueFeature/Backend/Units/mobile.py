@@ -11,7 +11,7 @@ class Mobile(Unit):
 
     @hit.setter
     def hit(self, value):
-        self._stats._hit = value  
+        self._stats._hit = value
 
     @property
     def hitMax(self):
@@ -45,14 +45,6 @@ class Mobile(Unit):
     def spd(self):
         return self._stats.spdMax + self._stats.spdMod
 
-    def TakeHit(self, m):
-        if not self.dod * 0.01 > random.random():
-            if m.atk <= self.defense:
-                return None
-            self.hit -= (m.atk - self.defense)
-            if self.hit <= 0:
-                self.Die()
-
     def Die(self):
         self._point.RemoveUnit(self)
 
@@ -63,6 +55,6 @@ class Mobile(Unit):
 
     def TakeHit(self, m):
         if not self.dod * 0.01 > random.random() and m.atk > self.defense:
-            self.hit = self.hit - (m.atk - self.defense)
-            if hit <= 0:
-                Die()
+            self.hit -= (m.atk - self.defense)
+            if self.hit <= 0:
+                self.Die()
